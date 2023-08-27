@@ -1,0 +1,870 @@
+{
+	"info": {
+		"_postman_id": "744575bb-f7fb-47ea-8ec4-92bb79b374cb",
+		"name": "EmployeeManagement",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "add new user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjaGFpdGhhbnlhdHMwMUBnbWFpbC5jb20iLCJpYXQiOjE2ODI0MTExMDQsImV4cCI6MTAwOTQ0NjY2MjQxMDgwfQ.VXKykkmf_yeo1I5N_zrj5AKKDu9SU0UTpSjoX_ILzr6kW4KuRMAwYyqPVjSyG72fskFPE0lEI0mpr7z_gJPWHg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"chaithanyats01@gmail.com\",\r\n    \"password\": \"abcd\",\r\n    \"role\": \"Admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/users/user/add",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"users",
+								"user",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Authenticating and get JWT token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"chaithanyats01@gmail.com\",\r\n    \"password\": \"abcd\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/users/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get user by email",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjaGFpdGhhbnlhdHMwMUBnbWFpbC5jb20iLCJpYXQiOjE2ODI0MTExMDQsImV4cCI6MTAwOTQ0NjY2MjQxMDgwfQ.VXKykkmf_yeo1I5N_zrj5AKKDu9SU0UTpSjoX_ILzr6kW4KuRMAwYyqPVjSyG72fskFPE0lEI0mpr7z_gJPWHg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/users/user/chaithanya@gmail.com",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"users",
+								"user",
+								"chaithanya@gmail.com"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "change password",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/users/user/changepassword",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"users",
+								"user",
+								"changepassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete by user id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjaGFpdGhhbnlhdHMwMUBnbWFpbC5jb20iLCJpYXQiOjE2ODI5NTAxMTIsImV4cCI6MTY4Mjk1MTkxMn0.-Apc0xuUehJzirAKlk0j8KOhIwUXXTSilrouO3QzYAeIsqeVN_oxTweOOa1XP1ewz_HKrIbRxNzs-9kcOGH9pQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/users/user/2252",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"users",
+								"user",
+								"2252"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Employees",
+			"item": [
+				{
+					"name": "add new employees",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjaGFpdGhhbnlhdHMwMUBnbWFpbC5jb20iLCJpYXQiOjE2ODQ3NTAzMjMsImV4cCI6MTY4NDc1MjEyM30.7Kk2QLDPQNinx6Sgxx39lqIbN7W4wTxlga_rZK-aE-8CRLfUngxBLmCZksbwWXtzGIDYZ-cd6mLdQF_4_CQVSw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"employeeName\": \"vamsi krishna\",\r\n    \"employeeDepartment\": \"development\",\r\n    \"email\": \"vamsi12@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/employees/employee/add",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"employees",
+								"employee",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all employees",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjaGFpdGhhbnlhdHMwMUBnbWFpbC5jb20iLCJpYXQiOjE2ODQ4NTIwMTIsImV4cCI6MTY4NDg1MzgxMiwic2NvcGUiOiJBZG1pbiJ9.4b3BStFcG-BoLDhFxmfTrCwKut8ynoxdVGlNjTNlEs048eBqkp7kgTk0mak_cKhQaRfHhlliLSOncIjEDGIksg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "localhost:8083/employees",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"employees"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get logged in employee details",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjaGFpdGhhbnlhdHMwMUBnbWFpbC5jb20iLCJpYXQiOjE2ODI0MTExMDQsImV4cCI6MTAwOTQ0NjY2MjQxMDgwfQ.VXKykkmf_yeo1I5N_zrj5AKKDu9SU0UTpSjoX_ILzr6kW4KuRMAwYyqPVjSyG72fskFPE0lEI0mpr7z_gJPWHg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/employees/employee",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"employees",
+								"employee"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updating logged in employee details",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjaGFpdGhhbnlhdHMwMUBnbWFpbC5jb20iLCJpYXQiOjE2ODI0MTExMDQsImV4cCI6MTAwOTQ0NjY2MjQxMDgwfQ.VXKykkmf_yeo1I5N_zrj5AKKDu9SU0UTpSjoX_ILzr6kW4KuRMAwYyqPVjSyG72fskFPE0lEI0mpr7z_gJPWHg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"employeeName\": \"chaithanyats01\",\r\n    \"employeeDepartment\": \"accounts\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/employees/employee",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"employees",
+								"employee"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update employee details by email",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjaGFpdGhhbnlhdHMwMUBnbWFpbC5jb20iLCJpYXQiOjE2ODI0MTExMDQsImV4cCI6MTAwOTQ0NjY2MjQxMDgwfQ.VXKykkmf_yeo1I5N_zrj5AKKDu9SU0UTpSjoX_ILzr6kW4KuRMAwYyqPVjSyG72fskFPE0lEI0mpr7z_gJPWHg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"employeeName\": \"chaithanyats01\",\r\n    \"employeeDepartment\": \"accounts\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/employees/employee/chaithanya@gmail.com",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"employees",
+								"employee",
+								"chaithanya@gmail.com"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete employee by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjaGFpdGhhbnlhdHMwMUBnbWFpbC5jb20iLCJpYXQiOjE2ODI0MTExMDQsImV4cCI6MTAwOTQ0NjY2MjQxMDgwfQ.VXKykkmf_yeo1I5N_zrj5AKKDu9SU0UTpSjoX_ILzr6kW4KuRMAwYyqPVjSyG72fskFPE0lEI0mpr7z_gJPWHg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/employee/employee/52",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"employee",
+								"employee",
+								"52"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Managers",
+			"item": [
+				{
+					"name": "add new manager",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjaGFpdGhhbnlhdHMwMUBnbWFpbC5jb20iLCJpYXQiOjE2ODI0MTExMDQsImV4cCI6MTAwOTQ0NjY2MjQxMDgwfQ.VXKykkmf_yeo1I5N_zrj5AKKDu9SU0UTpSjoX_ILzr6kW4KuRMAwYyqPVjSyG72fskFPE0lEI0mpr7z_gJPWHg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"managerName\": \"\",\r\n    \"managerDepartment\": \"\",\r\n    \"email\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/managers/manager/add",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"managers",
+								"manager",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all  managers",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjaGFpdGhhbnlhdHMwMUBnbWFpbC5jb20iLCJpYXQiOjE2ODI0MTExMDQsImV4cCI6MTAwOTQ0NjY2MjQxMDgwfQ.VXKykkmf_yeo1I5N_zrj5AKKDu9SU0UTpSjoX_ILzr6kW4KuRMAwYyqPVjSyG72fskFPE0lEI0mpr7z_gJPWHg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/managers",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"managers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get manager details by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjaGFpdGhhbnlhdHMwMUBnbWFpbC5jb20iLCJpYXQiOjE2ODI0MTExMDQsImV4cCI6MTAwOTQ0NjY2MjQxMDgwfQ.VXKykkmf_yeo1I5N_zrj5AKKDu9SU0UTpSjoX_ILzr6kW4KuRMAwYyqPVjSyG72fskFPE0lEI0mpr7z_gJPWHg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/managers/manager/12",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"managers",
+								"manager",
+								"12"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get reporting employee details of logged in manager",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjaGFpdGhhbnlhdHMwMUBnbWFpbC5jb20iLCJpYXQiOjE2ODI0MTExMDQsImV4cCI6MTAwOTQ0NjY2MjQxMDgwfQ.VXKykkmf_yeo1I5N_zrj5AKKDu9SU0UTpSjoX_ILzr6kW4KuRMAwYyqPVjSyG72fskFPE0lEI0mpr7z_gJPWHg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/manager/manager/employees",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"manager",
+								"manager",
+								"employees"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get details of logged in manager",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjaGFpdGhhbnlhdHMwMUBnbWFpbC5jb20iLCJpYXQiOjE2ODI0MTExMDQsImV4cCI6MTAwOTQ0NjY2MjQxMDgwfQ.VXKykkmf_yeo1I5N_zrj5AKKDu9SU0UTpSjoX_ILzr6kW4KuRMAwYyqPVjSyG72fskFPE0lEI0mpr7z_gJPWHg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/managers/manager",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"managers",
+								"manager"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add reporting employees to the manager",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjaGFpdGhhbnlhdHMwMUBnbWFpbC5jb20iLCJpYXQiOjE2ODI0MTExMDQsImV4cCI6MTAwOTQ0NjY2MjQxMDgwfQ.VXKykkmf_yeo1I5N_zrj5AKKDu9SU0UTpSjoX_ILzr6kW4KuRMAwYyqPVjSyG72fskFPE0lEI0mpr7z_gJPWHg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"employeeName\": \"chaithanyats01\",\r\n    \"employeeDepartment\": \"accounts\",\r\n    \"email\": \"shakthits01@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/managers/manager/employees/shakthits01@gmail.com",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"managers",
+								"manager",
+								"employees",
+								"shakthits01@gmail.com"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update logged in manager details",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjaGFpdGhhbnlhdHMwMUBnbWFpbC5jb20iLCJpYXQiOjE2ODI0MTExMDQsImV4cCI6MTAwOTQ0NjY2MjQxMDgwfQ.VXKykkmf_yeo1I5N_zrj5AKKDu9SU0UTpSjoX_ILzr6kW4KuRMAwYyqPVjSyG72fskFPE0lEI0mpr7z_gJPWHg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"managerName\": \"\",\r\n    \"managerDepartment\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/maangers/manager",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"maangers",
+								"manager"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update manager details by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjaGFpdGhhbnlhdHMwMUBnbWFpbC5jb20iLCJpYXQiOjE2ODI0MTExMDQsImV4cCI6MTAwOTQ0NjY2MjQxMDgwfQ.VXKykkmf_yeo1I5N_zrj5AKKDu9SU0UTpSjoX_ILzr6kW4KuRMAwYyqPVjSyG72fskFPE0lEI0mpr7z_gJPWHg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"managerName\": \"\",\r\n    \"managerDepartment\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/managers/manager/12",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"managers",
+								"manager",
+								"12"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete manager by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjaGFpdGhhbnlhdHMwMUBnbWFpbC5jb20iLCJpYXQiOjE2ODI0MTExMDQsImV4cCI6MTAwOTQ0NjY2MjQxMDgwfQ.VXKykkmf_yeo1I5N_zrj5AKKDu9SU0UTpSjoX_ILzr6kW4KuRMAwYyqPVjSyG72fskFPE0lEI0mpr7z_gJPWHg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/managers/manager/12",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"managers",
+								"manager",
+								"12"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admins",
+			"item": [
+				{
+					"name": "add new admin",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjaGFpdGhhbnlhdHMwMUBnbWFpbC5jb20iLCJpYXQiOjE2ODI0MTExMDQsImV4cCI6MTAwOTQ0NjY2MjQxMDgwfQ.VXKykkmf_yeo1I5N_zrj5AKKDu9SU0UTpSjoX_ILzr6kW4KuRMAwYyqPVjSyG72fskFPE0lEI0mpr7z_gJPWHg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"adminName\": \"\",\r\n    \"adminDepartment\": \"\",\r\n    \"email\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/admins/admin/add",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"admins",
+								"admin",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all admins",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjaGFpdGhhbnlhdHMwMUBnbWFpbC5jb20iLCJpYXQiOjE2ODI0MTExMDQsImV4cCI6MTAwOTQ0NjY2MjQxMDgwfQ.VXKykkmf_yeo1I5N_zrj5AKKDu9SU0UTpSjoX_ILzr6kW4KuRMAwYyqPVjSyG72fskFPE0lEI0mpr7z_gJPWHg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/admins",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"admins"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get admin details by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjaGFpdGhhbnlhdHMwMUBnbWFpbC5jb20iLCJpYXQiOjE2ODI0MTExMDQsImV4cCI6MTAwOTQ0NjY2MjQxMDgwfQ.VXKykkmf_yeo1I5N_zrj5AKKDu9SU0UTpSjoX_ILzr6kW4KuRMAwYyqPVjSyG72fskFPE0lEI0mpr7z_gJPWHg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/admins/admin/13",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"admins",
+								"admin",
+								"13"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update admin details by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjaGFpdGhhbnlhdHMwMUBnbWFpbC5jb20iLCJpYXQiOjE2ODI0MTExMDQsImV4cCI6MTAwOTQ0NjY2MjQxMDgwfQ.VXKykkmf_yeo1I5N_zrj5AKKDu9SU0UTpSjoX_ILzr6kW4KuRMAwYyqPVjSyG72fskFPE0lEI0mpr7z_gJPWHg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"adminName\": \"\",\r\n    \"adminDepartment\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/admins/admin/14",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"admins",
+								"admin",
+								"14"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete admin by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjaGFpdGhhbnlhdHMwMUBnbWFpbC5jb20iLCJpYXQiOjE2ODI0MTExMDQsImV4cCI6MTAwOTQ0NjY2MjQxMDgwfQ.VXKykkmf_yeo1I5N_zrj5AKKDu9SU0UTpSjoX_ILzr6kW4KuRMAwYyqPVjSyG72fskFPE0lEI0mpr7z_gJPWHg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/admins/admin/112",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"admins",
+								"admin",
+								"112"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
