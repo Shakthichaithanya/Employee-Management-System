@@ -33,10 +33,11 @@ public class SecurityConfiguration {
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
 		http.csrf().disable().authorizeHttpRequests().requestMatchers("/users/**").permitAll()
+				.requestMatchers("/api/v1/auth/**","/v2/api-docs","/v3/api-docs","v3/api-docs/**","/swagger-resources","/swagger-resources/**","/configuration/ui","/configuration/security","/swagger-ui/**","/webjars/**","/swagger-ui.html").permitAll()
 				.requestMatchers("/employees/**").hasAnyAuthority("Admin", "Employee")
 				.requestMatchers("/managers/**").hasAnyAuthority("Manager", "Admin")
 				.requestMatchers("/admins/**").hasAuthority("Admin")
-				.anyRequest().authenticated()
+				.anyRequest().permitAll()
 				.and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 				.and().authenticationProvider(authenticationProvider())
 				.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
