@@ -1,0 +1,39 @@
+server:
+  port: 8083
+spring:
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/employee
+    username: postgres
+    password: admin
+
+logging:
+  level:
+    org.springframework: ERROR
+    com.example: INFO
+  file:
+    name: app.log
+  pattern:
+    file: '%d %p %c{1.} [%t] %m%n'
+
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    enabled: true
+
+
+#server:
+#  ssl:
+#    key-store: C:\localdisk D\assignments\Employee\Employee-Management-System\employee-management.p12
+#    key-store-password: password
+#    key-store-type: pkcs12
+#    key-alias: employee-management
+#    key-password: password

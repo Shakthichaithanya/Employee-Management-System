@@ -58,6 +58,17 @@ class UserServiceImplTest {
 	}
 
 	@Test
+	void testAddUser() {
+		BDDMockito.given(passwordEncoder.encode("abcd")).willReturn(password);
+		Users newUser = new Users();
+		newUser.setEmail(userDTO.getEmail());
+		newUser.setRole(userDTO.getRole());
+		BDDMockito.given(userRepository.save(newUser)).willReturn(user);
+		String message = userService.addUser(userDTO);
+		assertThat(message).isEqualTo("User added");
+	}
+
+	@Test
 	void testGetUserByEmail() {
 		BDDMockito.given(userRepository.findByEmail(email)).willReturn(Optional.of(user));
 		Users userDetails = userService.getUserByEmail(email);

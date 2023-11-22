@@ -103,6 +103,7 @@ public class AdminServiceImpl implements AdminService {
 	 * @param long adminId
 	 * @return String
 	 * @exception AdminNotFoundException
+	 *
 	 */
 	@Override
 	public String deleteAdminById(long adminId) {
