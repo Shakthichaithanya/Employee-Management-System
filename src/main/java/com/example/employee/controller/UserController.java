@@ -53,10 +53,6 @@ public class UserController {
 		logger.info(message);
 		return new ResponseEntity<>(responseInfo, HttpStatus.CREATED);
 	}
-	@GetMapping("/hello")
-	public String sayHello(){
-		return "Hello";
-	}
 	/**
 	 * fetching all user details by email
 	 * 
