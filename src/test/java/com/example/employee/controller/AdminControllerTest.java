@@ -12,6 +12,7 @@ import java.util.List;
 
 import org.hamcrest.CoreMatchers;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.BDDMockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,7 +60,8 @@ class AdminControllerTest {
 	}
 
 	@Test
-	void testAddAdmin() throws JsonProcessingException, Exception {
+	@DisplayName("JUnit test case to add new admin")
+	void testAddAdmin() throws Exception {
 
 		BDDMockito.given(adminService.addAdmin(adminDTO)).willReturn("admin added");
 
@@ -70,7 +72,8 @@ class AdminControllerTest {
 	}
 
 	@Test
-	void testGetAllAdmins() throws JsonProcessingException, Exception {
+	@DisplayName("JUnit test case to get all admins")
+	void testGetAllAdmins() throws Exception {
 		List<AdminDTO> admins = new ArrayList<>();
 		admins.add(adminDTO);
 		BDDMockito.given(adminService.getAllAdmins()).willReturn(admins);
@@ -81,6 +84,7 @@ class AdminControllerTest {
 	}
 
 	@Test
+	@DisplayName("JUnit test case to get admin by Id")
 	void testGetAdminById() throws Exception {
 		BDDMockito.given(adminService.getAdminById(adminDTO.getAdminId())).willReturn(adminDTO);
 		ResultActions response = mockMvc.perform(get("/admins/admin/" + adminDTO.getAdminId()));
@@ -88,7 +92,8 @@ class AdminControllerTest {
 	}
 
 	@Test
-	void testUpdateAdminDetails() throws JsonProcessingException, Exception {
+	@DisplayName("Junit test case to update admin details")
+	void testUpdateAdminDetails() throws Exception {
 		BDDMockito.given(adminService.updateAdminDetails(admin.getAdminId(), adminDTO))
 				.willReturn("admin details updated");
 		ResultActions response = mockMvc.perform(put("/admins/admin/" + admin.getAdminId())
@@ -99,6 +104,7 @@ class AdminControllerTest {
 	}
 
 	@Test
+	@DisplayName("JUnit test case to delete admin by Id")
 	void testDeleteAdminById() throws Exception {
 		BDDMockito.given(adminService.deleteAdminById(admin.getAdminId())).willReturn("Admin details deleted");
 
