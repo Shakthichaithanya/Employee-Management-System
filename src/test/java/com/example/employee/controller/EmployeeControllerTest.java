@@ -12,6 +12,7 @@ import java.util.List;
 
 import org.hamcrest.CoreMatchers;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.BDDMockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,7 +62,8 @@ class EmployeeControllerTest {
 	}
 
 	@Test
-	void testAddEmployuee() throws JsonProcessingException, Exception {
+	@DisplayName("JUnit test for adding new Employee")
+	void testAddEmployee() throws Exception {
 		BDDMockito.given(employeeService.addEmployee(employeeDTO)).willReturn("Employee added successfully");
 		ResultActions response = mockMvc.perform(post("/employees/employee/add").contentType(MediaType.APPLICATION_JSON)
 				.content(objectMapper.writeValueAsString(employeeDTO)));
@@ -70,6 +72,7 @@ class EmployeeControllerTest {
 	}
 
 	@Test
+	@DisplayName("JUnit test for getting all employees")
 	void testGetAllEmployees() throws Exception {
 		List<EmployeeDTO> employees = new ArrayList<>();
 		employees.add(employeeDTO);
@@ -82,6 +85,7 @@ class EmployeeControllerTest {
 
 	@Test
 	@WithMockUser(username = "siva@gmail.com", authorities = "Employee")
+	@DisplayName("JUnit test for getting logged in employee details")
 	void testGetLoggedInEmployeeDetails() throws Exception {
 
 		BDDMockito.given(employeeService.getEmployee(email)).willReturn(employeeDTO);
@@ -93,7 +97,8 @@ class EmployeeControllerTest {
 
 	@Test
 	@WithMockUser(username = "siva@gmail.com", authorities = "Employee")
-	void testUpdateLoggedInEmployeeDetails() throws JsonProcessingException, Exception {
+	@DisplayName("JUnit test for updating logged in employee details")
+	void testUpdateLoggedInEmployeeDetails() throws Exception {
 		BDDMockito.given(employeeService.updateEmployeeDetails(email, employeeDTO))
 				.willReturn("Employee details are updated");
 
@@ -105,7 +110,8 @@ class EmployeeControllerTest {
 	}
 
 	@Test
-	void testUpdateEmployee() throws JsonProcessingException, Exception {
+	@DisplayName("JUnit test for updating employee details")
+	void testUpdateEmployee() throws Exception {
 		BDDMockito.given(employeeService.updateEmployeeDetails(email, employeeDTO))
 				.willReturn("Employee details are updated");
 		ResultActions response = mockMvc.perform(put("/employees/employee/" + email)
@@ -116,6 +122,7 @@ class EmployeeControllerTest {
 	}
 
 	@Test
+	@DisplayName("JUnit test for deleting employees")
 	void testDeleteEmployeeById() throws Exception {
 		BDDMockito.given(employeeService.deleteEmployee(employee.getEmployeeId()))
 				.willReturn("employee details are deleted");
