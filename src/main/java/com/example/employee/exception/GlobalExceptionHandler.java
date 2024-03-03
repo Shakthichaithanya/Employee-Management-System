@@ -23,7 +23,7 @@ public class GlobalExceptionHandler extends RuntimeException {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private static Logger logger = LoggerFactory.getLogger(GlobalExceptionHandler.class);
+	private static final Logger logger = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
 	@ExceptionHandler(value = { ManagerNotFoundException.class })
 	public ResponseEntity<ErrorInfo> managerNotFoundExceptionHandeler(ManagerNotFoundException exception,
