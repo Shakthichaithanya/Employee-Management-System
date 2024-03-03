@@ -21,8 +21,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	private static final Logger logger = LoggerFactory.getLogger(EmployeeServiceImpl.class);
 
-	private EmployeeRepository employeeRepository;
-	private ModelMapper modelMapper;
+	private final EmployeeRepository employeeRepository;
+	private final ModelMapper modelMapper;
 
 	@Autowired
 	public EmployeeServiceImpl(EmployeeRepository employeeRepository, ModelMapper modelMapper){
