@@ -27,10 +27,10 @@ import com.example.employee.service.UserService;
 public class UserController {
 
 	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
-	private UserService userService;
-	private JwtService jwtService;
-	private ModelMapper modelMapper;
-	private AuthenticationManager authenticationManager;
+	private final UserService userService;
+	private final JwtService jwtService;
+	private final ModelMapper modelMapper;
+	private final AuthenticationManager authenticationManager;
 
 	public UserController(UserService userService, JwtService jwtService, ModelMapper modelMapper, AuthenticationManager authenticationManager) {
 		this.userService = userService;
