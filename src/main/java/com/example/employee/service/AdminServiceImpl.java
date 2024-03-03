@@ -19,8 +19,8 @@ import com.example.employee.repository.AdminRepository;
 public class AdminServiceImpl implements AdminService {
 
 	private static final Logger logger = LoggerFactory.getLogger(AdminServiceImpl.class);
-	private AdminRepository adminRepository;
-	private ModelMapper modelMapper;
+	private final AdminRepository adminRepository;
+	private final ModelMapper modelMapper;
 
 	@Autowired
 	public AdminServiceImpl(AdminRepository adminRepository,ModelMapper modelMapper){
