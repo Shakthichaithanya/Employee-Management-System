@@ -26,7 +26,7 @@ import com.example.employee.service.UserService;
 @RequestMapping("/admins")
 public class AdminController {
 
-	private static Logger logger = LoggerFactory.getLogger(AdminController.class);
+	private static final Logger logger = LoggerFactory.getLogger(AdminController.class);
 	private final AdminService adminService;
 	private final UserService userService;
 

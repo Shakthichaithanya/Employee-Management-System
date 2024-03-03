@@ -29,7 +29,7 @@ import com.example.employee.service.UserService;
 @RequestMapping("/employees")
 public class EmployeeController {
 
-	private static Logger logger = LoggerFactory.getLogger(EmployeeController.class);
+	private static final Logger logger = LoggerFactory.getLogger(EmployeeController.class);
 
 	private final EmployeeService employeeService;
 	private final UserService userService;

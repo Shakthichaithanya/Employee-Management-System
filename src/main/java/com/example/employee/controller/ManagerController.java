@@ -30,7 +30,7 @@ import com.example.employee.service.UserService;
 @RequestMapping("/managers")
 public class ManagerController {
 
-	private static Logger logger = LoggerFactory.getLogger(ManagerController.class);
+	private static final Logger logger = LoggerFactory.getLogger(ManagerController.class);
 	private final ManagerService managerService;
 	private final UserService userService;
 

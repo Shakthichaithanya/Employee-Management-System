@@ -26,7 +26,7 @@ import com.example.employee.service.UserService;
 @RequestMapping("/users")
 public class UserController {
 
-	private static Logger logger = LoggerFactory.getLogger(UserController.class);
+	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 	private UserService userService;
 	private JwtService jwtService;
 	private ModelMapper modelMapper;

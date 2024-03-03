@@ -20,7 +20,7 @@ import com.example.employee.repository.ManagerRepository;
 @Service
 public class ManagerServiceImpl implements ManagerService {
 
-	private static Logger logger = LoggerFactory.getLogger(ManagerServiceImpl.class);
+	private static final  Logger logger = LoggerFactory.getLogger(ManagerServiceImpl.class);
 	private ManagerRepository managerRepository;
 	private ModelMapper modelMapper;
 

@@ -19,7 +19,7 @@ import com.example.employee.repository.EmployeeRepository;
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 
-	private static Logger logger = LoggerFactory.getLogger(EmployeeServiceImpl.class);
+	private static final Logger logger = LoggerFactory.getLogger(EmployeeServiceImpl.class);
 
 	private EmployeeRepository employeeRepository;
 	private ModelMapper modelMapper;
