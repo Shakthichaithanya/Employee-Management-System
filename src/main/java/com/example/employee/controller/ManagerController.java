@@ -31,11 +31,14 @@ import com.example.employee.service.UserService;
 public class ManagerController {
 
 	private static Logger logger = LoggerFactory.getLogger(ManagerController.class);
+	private final ManagerService managerService;
+	private final UserService userService;
 
 	@Autowired
-	private ManagerService managerService;
-	@Autowired
-	private UserService userService;
+	public ManagerController(ManagerService managerService, UserService userService) {
+		this.managerService = managerService;
+		this.userService = userService;
+	}
 
 	/**
 	 * Creating new Manager

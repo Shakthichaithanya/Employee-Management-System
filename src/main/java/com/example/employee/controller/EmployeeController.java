@@ -31,11 +31,14 @@ public class EmployeeController {
 
 	private static Logger logger = LoggerFactory.getLogger(EmployeeController.class);
 
-	@Autowired
-	private EmployeeService employeeService;
+	private final EmployeeService employeeService;
+	private final UserService userService;
 
 	@Autowired
-	private UserService userService;
+	public EmployeeController(EmployeeService employeeService, UserService userService){
+		this.employeeService = employeeService;
+		this.userService = userService;
+	}
 
 	/**
 	 * creating new Employee

@@ -21,12 +21,14 @@ import com.example.employee.repository.ManagerRepository;
 public class ManagerServiceImpl implements ManagerService {
 
 	private static Logger logger = LoggerFactory.getLogger(ManagerServiceImpl.class);
-
-	@Autowired
 	private ManagerRepository managerRepository;
+	private ModelMapper modelMapper;
 
 	@Autowired
-	private ModelMapper modelMapper;
+	public ManagerServiceImpl(ManagerRepository managerRepository, ModelMapper modelMapper) {
+		this.managerRepository = managerRepository;
+		this.modelMapper = modelMapper;
+	}
 
 	/**
 	 * creating new manager

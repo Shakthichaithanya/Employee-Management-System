@@ -24,10 +24,14 @@ import com.example.employee.filter.JWTAuthenticationFilter;
 @EnableMethodSecurity
 public class SecurityConfiguration {
 
+	private final UserDetailsService userDetailsService;
+	private final JWTAuthenticationFilter jwtAuthenticationFilter;
+
 	@Autowired
-	private UserDetailsService userDetailsService;
-	@Autowired
-	private JWTAuthenticationFilter jwtAuthenticationFilter;
+	public SecurityConfiguration(UserDetailsService userDetailsService, JWTAuthenticationFilter jwtAuthenticationFilter){
+		this.userDetailsService = userDetailsService;
+		this.jwtAuthenticationFilter = jwtAuthenticationFilter;
+	}
 
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {

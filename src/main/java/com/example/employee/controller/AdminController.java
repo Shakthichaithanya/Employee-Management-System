@@ -27,10 +27,14 @@ import com.example.employee.service.UserService;
 public class AdminController {
 
 	private static Logger logger = LoggerFactory.getLogger(AdminController.class);
+	private final AdminService adminService;
+	private final UserService userService;
+
 	@Autowired
-	private AdminService adminService;
-	@Autowired
-	private UserService userService;
+	public AdminController(AdminService adminService, UserService userService){
+		this.adminService = adminService;
+		this.userService = userService;
+	}
 
 	/**
 	 * creating a new Admin

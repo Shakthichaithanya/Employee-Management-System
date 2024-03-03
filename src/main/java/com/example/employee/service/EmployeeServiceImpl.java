@@ -21,11 +21,14 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	private static Logger logger = LoggerFactory.getLogger(EmployeeServiceImpl.class);
 
-	@Autowired
 	private EmployeeRepository employeeRepository;
+	private ModelMapper modelMapper;
 
 	@Autowired
-	private ModelMapper modelMapper;
+	public EmployeeServiceImpl(EmployeeRepository employeeRepository, ModelMapper modelMapper){
+		this.employeeRepository = employeeRepository;
+		this.modelMapper = modelMapper;
+	}
 
 	/**
 	 * creating new employee

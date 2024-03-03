@@ -19,12 +19,14 @@ import com.example.employee.repository.AdminRepository;
 public class AdminServiceImpl implements AdminService {
 
 	static Logger logger = LoggerFactory.getLogger(AdminServiceImpl.class);
-	@Autowired
 	private AdminRepository adminRepository;
-
-	@Autowired
 	private ModelMapper modelMapper;
 
+	@Autowired
+	public AdminServiceImpl(AdminRepository adminRepository,ModelMapper modelMapper){
+		this.adminRepository = adminRepository;
+		this.modelMapper = modelMapper;
+	}
 	/**
 	 * addManager: creating new admin
 	 * 

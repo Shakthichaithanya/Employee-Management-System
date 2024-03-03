@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
-import java.util.stream.Collectors;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -28,7 +27,7 @@ public class JwtService {
 	}
 
 	public String generateJwtToken(Map<String, Object> getClaims, UserDetails userDetails) {
-		List<GrantedAuthority> roles = userDetails.getAuthorities().stream().collect(Collectors.toList());
+		List<GrantedAuthority> roles = (List<GrantedAuthority>) userDetails.getAuthorities().stream().toList();
 		String role = roles.get(0).toString();
 		System.out.println(role);
 		return Jwts.builder().setClaims(getClaims).setSubject(userDetails.getUsername())
