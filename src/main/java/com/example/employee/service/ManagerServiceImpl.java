@@ -21,8 +21,8 @@ import com.example.employee.repository.ManagerRepository;
 public class ManagerServiceImpl implements ManagerService {
 
 	private static final  Logger logger = LoggerFactory.getLogger(ManagerServiceImpl.class);
-	private ManagerRepository managerRepository;
-	private ModelMapper modelMapper;
+	private final ManagerRepository managerRepository;
+	private final ModelMapper modelMapper;
 
 	@Autowired
 	public ManagerServiceImpl(ManagerRepository managerRepository, ModelMapper modelMapper) {

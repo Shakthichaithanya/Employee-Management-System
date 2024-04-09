@@ -31,3 +31,11 @@ build/
 
 ### VS Code ###
 .vscode/
+.idea/
+logs/
+!**/src/main/resource/*.key
+!**/src/main/resource/*.srl
+!**/src/main/resource/*.pem
+!**/src/main/resource/*.crt
+!**/src/main/resource/*.p12
+!**/src/main/resource/*.csr

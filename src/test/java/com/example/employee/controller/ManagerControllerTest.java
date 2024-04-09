@@ -66,7 +66,7 @@ class ManagerControllerTest {
 	}
 
 	@Test
-	void testAddManager() throws JsonProcessingException, Exception {
+	void testAddManager() throws Exception {
 		BDDMockito.given(managerService.addManager(managerDTO)).willReturn("Manager added successfully");
 
 		ResultActions response = mockMvc.perform(post("/managers/manager/add").contentType(MediaType.APPLICATION_JSON)
@@ -108,8 +108,7 @@ class ManagerControllerTest {
 		ResultActions response = mockMvc.perform(get("/managers/manager/employees"));
 
 		response.andExpect(status().isOk()).andExpect(jsonPath("$.size()", CoreMatchers.is(1)));
-		;
-	}
+    }
 
 	@Test
 	@WithMockUser(username = "shakthi@gmail.com", authorities = "Manager")
@@ -124,7 +123,7 @@ class ManagerControllerTest {
 
 	@Test
 	@WithMockUser(username = "shakthi@gmail.com", authorities = "Manager")
-	void testUpdateLoggedInManagerDetails() throws JsonProcessingException, Exception {
+	void testUpdateLoggedInManagerDetails() throws Exception {
 		BDDMockito.given(managerService.updateLoggedInManager(email, managerDTO)).willReturn("Manager details updated");
 		ResultActions response = mockMvc.perform(put("/managers/manager").contentType(MediaType.APPLICATION_JSON)
 				.content(objectMapper.writeValueAsString(managerDTO)));
@@ -134,7 +133,7 @@ class ManagerControllerTest {
 	}
 
 	@Test
-	void testAddReportingEmployees() throws JsonProcessingException, Exception {
+	void testAddReportingEmployees() throws Exception {
 		BDDMockito.given(managerService.addReportingEmployees(email, employeeDTO))
 				.willReturn("Reporting employee added to manager");
 
@@ -146,7 +145,7 @@ class ManagerControllerTest {
 	}
 
 	@Test
-	void testUpdateManagerDetailsById() throws JsonProcessingException, Exception {
+	void testUpdateManagerDetailsById() throws Exception {
 
 		BDDMockito.given(managerService.updateManagerDetails(manager.getManagerId(), managerDTO))
 				.willReturn("Manager details updated");

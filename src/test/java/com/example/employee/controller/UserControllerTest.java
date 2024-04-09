@@ -65,7 +65,7 @@ class UserControllerTest {
 	}
 
 	@Test
-	void testAddUser() throws JsonProcessingException, Exception {
+	void testAddUser() throws Exception {
 		BDDMockito.given(userService.addUser(userDTO)).willReturn("User added");
 
 		ResultActions response = mockMvc.perform(post("/users/user/add").contentType(MediaType.APPLICATION_JSON)
@@ -86,7 +86,7 @@ class UserControllerTest {
 
 	@Test
 	@WithMockUser(username = "shakthi@gmail.com", authorities = "Admin")
-	void testUserPasswordChange() throws JsonProcessingException, Exception {
+	void testUserPasswordChange() throws Exception {
 		BDDMockito.given(userService.changePassword(email, passwordDTO)).willReturn("password changed successfully");
 
 		ResultActions response = mockMvc.perform(patch("/users/user/changepassword")

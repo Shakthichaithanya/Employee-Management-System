@@ -1,5 +1,4 @@
-server:
-  port: 8083
+
 spring:
   jpa:
     properties:
@@ -37,3 +36,14 @@ springdoc:
 #    key-store-type: pkcs12
 #    key-alias: employee-management
 #    key-password: password
+
+server:
+  port : 8083
+  ssl:
+    key-store: classpath:server.p12
+    key-store-password: password
+    key-store-type: PKCS12
+    client-auth: NEED
+    trust-store: classpath:truststore.p12
+    trust-store-password: password
+    trust-store-type: PKCS12
