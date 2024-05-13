@@ -1,5 +1,6 @@
 package com.example.employee.controller;
 
+import com.example.employee.info.TokenResponse;
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,18 +27,23 @@ import com.example.employee.service.UserService;
 @RequestMapping("/users")
 public class UserController {
 
+
+
 	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 	private final UserService userService;
 	private final JwtService jwtService;
 	private final ModelMapper modelMapper;
 	private final AuthenticationManager authenticationManager;
 
+
+	@Autowired
 	public UserController(UserService userService, JwtService jwtService, ModelMapper modelMapper, AuthenticationManager authenticationManager) {
 		this.userService = userService;
 		this.jwtService = jwtService;
 		this.modelMapper = modelMapper;
 		this.authenticationManager = authenticationManager;
 	}
+
 	/**
 	 * Creating new user
 	 * 
@@ -72,14 +78,15 @@ public class UserController {
 	 * @return String
 	 */
 	@PostMapping("/login")
-	public String authenticateUser(@RequestBody LoginDTO loginUser) {
+	public ResponseEntity<TokenResponse> authenticateUser(@RequestBody LoginDTO loginUser) {
 
 		Authentication authentication = authenticationManager
 				.authenticate(new UsernamePasswordAuthenticationToken(loginUser.getEmail(), loginUser.getPassword()));
 		if (authentication.isAuthenticated()) {
 			logger.info("JWT token generated");
-			return jwtService.generateJwtToken(userService.getUserByEmail(loginUser.getEmail()));
+			String token = jwtService.generateJwtToken(userService.getUserByEmail(loginUser.getEmail()));
 
+			return new ResponseEntity<>(new TokenResponse(token),HttpStatus.OK);
 		}
 		throw new BadCredentialsException("Bad credentials");
 

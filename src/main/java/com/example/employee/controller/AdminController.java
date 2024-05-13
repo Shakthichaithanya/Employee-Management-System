@@ -105,7 +105,9 @@ public class AdminController {
 	 */
 	@DeleteMapping("/admin/{id}")
 	public ResponseEntity<Void> deleteAdminById(@PathVariable("id") long adminId) {
+		String email = adminService.getAdminById(adminId).getEmail();
 		String message = adminService.deleteAdminById(adminId);
+		userService.deleteUserByEmail(email);
 		logger.info(message);
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}

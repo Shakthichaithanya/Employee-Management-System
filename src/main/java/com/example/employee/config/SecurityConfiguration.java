@@ -41,8 +41,7 @@ public class SecurityConfiguration {
 				.requestMatchers("/employees/**").hasAnyAuthority("Admin", "Employee")
 				.requestMatchers("/managers/**").hasAnyAuthority("Manager", "Admin")
 				.requestMatchers("/admins/**").hasAuthority("Admin")
-				.requestMatchers("/users/greet").permitAll()
-				.anyRequest().permitAll()
+				.anyRequest().authenticated()
 				.and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 				.and().authenticationProvider(authenticationProvider())
 				.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);

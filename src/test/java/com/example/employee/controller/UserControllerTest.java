@@ -1,5 +1,9 @@
 package com.example.employee.controller;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.patch;
@@ -7,6 +11,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import com.example.employee.dto.LoginDTO;
 import org.hamcrest.CoreMatchers;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -18,6 +23,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
@@ -56,6 +62,9 @@ class UserControllerTest {
 	private String email;
 	private PasswordDTO passwordDTO;
 
+	@Autowired
+	UserController userController;
+
 	@BeforeEach
 	void setUp() throws Exception {
 		user = new Users(1, "shakthi@gmail.com", "abcd", "Admin");
@@ -72,6 +81,39 @@ class UserControllerTest {
 				.content(objectMapper.writeValueAsString(userDTO)));
 
 		response.andExpect(status().isCreated()).andExpect(jsonPath("$.message", CoreMatchers.is("User added")));
+	}
+
+	@Test
+	void testAuthenticateUser_Success() throws Exception {
+		// Mocking user and login DTO
+		Users mockedUser = new Users();
+		mockedUser.setEmail("test@example.com");
+
+		LoginDTO loginDTO = new LoginDTO();
+		loginDTO.setEmail("test@example.com");
+		loginDTO.setPassword("password123");
+
+		// Mock authentication result
+		when(authenticationManager.authenticate(any()))
+				.thenReturn(new UsernamePasswordAuthenticationToken(loginDTO.getEmail(), loginDTO.getPassword()));
+
+		// Mock user retrieval
+		when(userService.getUserByEmail(loginDTO.getEmail())).thenReturn(mockedUser);
+
+		// Mock JWT token generation
+		when(jwtService.generateJwtToken(mockedUser)).thenReturn("mocked_jwt_token");
+
+		// Call the method
+//		String jwtToken = .authenticateUser(loginDTO);
+
+		String jwtToken = userController.authenticateUser(loginDTO);
+		ResultActions response = mockMvc.perform(post("/users/login")
+				.contentType(MediaType.APPLICATION_JSON).content(objectMapper.writeValueAsBytes(loginDTO)));
+
+		response.andExpect(status().isUnauthorized());
+		// Verify
+		assertNotNull(jwtToken);
+		assertEquals("mocked_jwt_token", jwtToken);
 	}
 
 	@Test

@@ -12,6 +12,7 @@ import com.example.employee.entities.Users;
 import com.example.employee.exception.ConstraintViolationException;
 import com.example.employee.exception.UserNotFoundException;
 import com.example.employee.repository.UserRepository;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -97,6 +98,12 @@ public class UserServiceImpl implements UserService {
 		userRepository.deleteById(userId);
 		logger.info("user deleted");
 		return "user deleted";
+	}
+
+	@Override
+	@Transactional
+	public void deleteUserByEmail(String email) {
+		userRepository.deleteByEmail(email);
 	}
 
 }
