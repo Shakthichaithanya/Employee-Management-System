@@ -45,7 +45,7 @@ The **Employee Management System** is a backend application that handles employe
    - The system maintains a log of important actions (such as employee creation, updates, and deletion) performed by users with the corresponding role information for audit purposes.
 
 #### 6. **Data Security**:
-   - **JWT Expiration and Refresh Tokens**: JWT tokens have a set expiration time to ensure secure access, and refresh tokens can be implemented to regenerate expired tokens without requiring a full login.
+   - **JWT Expiration**: JWT tokens have a set expiration time to ensure secure access.
 
 #### 7. **Error Handling**:
    - The system has a robust error-handling mechanism to handle various scenarios like invalid credentials, unauthorized access, token expiration, and resource not found.
@@ -53,7 +53,8 @@ The **Employee Management System** is a backend application that handles employe
 #### 8. **Database Design**:
    - The system uses a **relational database** to store employee details, roles, and activity logs.
    - **Employee Entity**: Stores employee details such as ID, name, role, department, and contact information.
-   - **Role Entity**: Defines the various roles (Employee, Manager, Admin) and their permissions.
+   - **Manager Entity**: Stores Manger details such as ID, name, department, and Reporting employee List.
+   - **Admin Entity**: Stores Admin details such as ID, name, contact information.
    - **User Entity**: Handles user authentication details such as username, password, and JWT token validity.
 
 ### **Use Cases**:
@@ -61,7 +62,6 @@ The **Employee Management System** is a backend application that handles employe
 #### 1. **Employee**:
    - Log in to the system and access the personal dashboard.
    - Update personal details like phone number, address, etc.
-   - View team members (if part of a team).
 
 #### 2. **Manager**:
    - Log in and view the list of employees under their management.
@@ -71,7 +71,7 @@ The **Employee Management System** is a backend application that handles employe
 #### 3. **Admin**:
    - Access the admin dashboard and perform full CRUD operations across the system.
    - Assign roles (Employee, Manager, Admin) to other users.
-   - Manage all employee records, view activity logs, and generate reports.
+   - Manage all employee records, view activity logs.
    - Monitor and manage the security aspects of the system, such as token expiration and user permissions.
 
 ### **Conclusion**:
