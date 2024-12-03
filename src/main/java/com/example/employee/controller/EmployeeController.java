@@ -82,7 +82,8 @@ public class EmployeeController {
 	@PreAuthorize("hasAuthority('Employee')")
 	public ResponseEntity<EmployeeDTO> getLoggedInEmployeeDetails() {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		String email = auth.getName();
+		String email = auth.getPrincipal().toString();
+		System.out.println(email);
 		EmployeeDTO employee = employeeService.getEmployee(email);
 		logger.info("fetching employee details by email");
 		return new ResponseEntity<>(employee, HttpStatus.OK);
@@ -108,7 +109,7 @@ public class EmployeeController {
 	/**
 	 * updating employee details using email
 	 * 
-	 * @param String      email
+	 * @param  String      email
 	 * @param EmployeeDTO employeeDto
 	 * @return ResponseInfo
 	 */
@@ -132,7 +133,6 @@ public class EmployeeController {
 	@DeleteMapping("/employee/{id}")
 	@PreAuthorize("hasAuthority('Admin')")
 	public ResponseEntity<Void> deleteEmployeeById(@PathVariable("id") long employeeId) {
-
 		String message = employeeService.deleteEmployee(employeeId);
 		logger.info(message);
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);

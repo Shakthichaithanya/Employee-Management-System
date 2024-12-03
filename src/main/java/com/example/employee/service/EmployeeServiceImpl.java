@@ -70,9 +70,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 	 * @param String email
 	 * @return EmployeeDTO
 	 * @exception EmployeeNotFoundException
-	 */
+	 */ 
 	@Override
-	@PreAuthorize("# email == authentication.principal.username")
+	@PreAuthorize("# email == authentication.principal")
 	public EmployeeDTO getEmployee(String email) {
 		Employee employee = employeeRepository.findByEmail(email)
 				.orElseThrow(() -> new EmployeeNotFoundException("Employee with email: " + email + " not found"));

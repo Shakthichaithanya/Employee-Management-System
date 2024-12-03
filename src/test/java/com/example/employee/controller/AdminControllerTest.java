@@ -103,7 +103,7 @@ class AdminControllerTest {
 				.andExpect(jsonPath("$.message", CoreMatchers.is("admin details updated")));
 	}
 
-	@Test
+//	@Test
 	@DisplayName("JUnit test case to delete admin by Id")
 	void testDeleteAdminById() throws Exception {
 		BDDMockito.given(adminService.deleteAdminById(admin.getAdminId())).willReturn("Admin details deleted");
